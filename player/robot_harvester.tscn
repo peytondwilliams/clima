@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqd136drd4uo1"]
+
+[ext_resource type="PackedScene" uid="uid://c1x714huanoo8" path="res://player/robot_default.tscn" id="1_ad2bl"]
+[ext_resource type="Script" path="res://player/robot_harvester.gd" id="2_b6s8l"]
+[ext_resource type="Texture2D" uid="uid://dfmqgl6qovnwg" path="res://art/kenney_topdowntanksredux/PNG/Default size/tank_blue.png" id="2_pr0t0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w015n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pr0t0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6m2rg"]
+radius = 21.0
+height = 48.0
+
+[node name="RobotHarvester" instance=ExtResource("1_ad2bl")]
+script = ExtResource("2_b6s8l")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_w015n")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_6m2rg")
+
+[node name="TargetArea" parent="." index="2"]
+collision_mask = 3

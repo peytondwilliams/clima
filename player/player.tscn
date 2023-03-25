@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://coai4lmeu5dd4"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_uk6w1"]
+[ext_resource type="PackedScene" uid="uid://bi05fhc3ha7eg" path="res://player/Selector.tscn" id="2_u5foo"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_uk6w1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_speed = 40.0
+
+[node name="Selector" parent="." instance=ExtResource("2_u5foo")]
+visible = false
