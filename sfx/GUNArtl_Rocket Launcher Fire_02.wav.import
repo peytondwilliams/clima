@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://br3fcqbky5a8n"
+path="res://.godot/imported/GUNArtl_Rocket Launcher Fire_02.wav-e1ca7e50e50c91e42be545832b74a555.sample"
+
+[deps]
+
+source_file="res://sfx/GUNArtl_Rocket Launcher Fire_02.wav"
+dest_files=["res://.godot/imported/GUNArtl_Rocket Launcher Fire_02.wav-e1ca7e50e50c91e42be545832b74a555.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

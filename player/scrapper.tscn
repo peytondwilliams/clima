@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://djqf2jwln8dyy"]
+
+[ext_resource type="Script" path="res://player/scrapper.gd" id="1_4dydk"]
+[ext_resource type="Texture2D" uid="uid://dba2fvytkiqqf" path="res://art/kenney_sci-fi-rts/PNG/Default size/Structure/scifiStructure_08.png" id="1_7rsah"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ugcn3"]
+radius = 26.0
+
+[node name="scrapper" type="StaticBody2D" groups=["scrapper"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_4dydk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7rsah")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_ugcn3")

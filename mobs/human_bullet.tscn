@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5ijiy01p83vc"]
+
+[ext_resource type="Texture2D" uid="uid://ciniuj400v5k8" path="res://art/kenney_topdowntanksredux/PNG/Retina/bulletDark1.png" id="1_ms1yp"]
+[ext_resource type="Script" path="res://mobs/human_bullet.gd" id="1_r0h7a"]
+[ext_resource type="AudioStream" uid="uid://bj5uwlrp725sp" path="res://sfx/GUNAuto_Assault Rifle A Fire_01.wav" id="3_hlm3o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x35fy"]
+radius = 3.0
+height = 12.0
+
+[node name="HumanBullet" type="Area2D"]
+script = ExtResource("1_r0h7a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ms1yp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_x35fy")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hlm3o")
+autoplay = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

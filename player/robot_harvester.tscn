@@ -1,8 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqd136drd4uo1"]
+[gd_scene load_steps=12 format=3 uid="uid://dqd136drd4uo1"]
 
 [ext_resource type="PackedScene" uid="uid://c1x714huanoo8" path="res://player/robot_default.tscn" id="1_ad2bl"]
 [ext_resource type="Script" path="res://player/robot_harvester.gd" id="2_b6s8l"]
 [ext_resource type="Texture2D" uid="uid://dfmqgl6qovnwg" path="res://art/kenney_topdowntanksredux/PNG/Default size/tank_blue.png" id="2_pr0t0"]
+[ext_resource type="Shader" path="res://player/highlight.gdshader" id="3_xuquh"]
+[ext_resource type="AudioStream" uid="uid://cwbktfrxu5rc4" path="res://sfx/EXPLDsgn_Explosion Impact_14.wav" id="4_hdu1h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbah5"]
+resource_local_to_scene = true
+shader = ExtResource("3_xuquh")
+shader_parameter/color = Quaternion(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w015n"]
 animations = [{
@@ -19,10 +30,47 @@ animations = [{
 radius = 21.0
 height = 48.0
 
+[sub_resource type="Animation" id="Animation_mk80d"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gngf6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t5pb1"]
+_data = {
+"RESET": SubResource("Animation_gngf6"),
+"death": SubResource("Animation_mk80d")
+}
+
 [node name="RobotHarvester" instance=ExtResource("1_ad2bl")]
 script = ExtResource("2_b6s8l")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_kbah5")
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_w015n")
 
@@ -31,4 +79,26 @@ position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_6m2rg")
 
 [node name="TargetArea" parent="." index="2"]
-collision_mask = 3
+collision_mask = 2
+
+[node name="ShootTimer" type="Timer" parent="." index="3"]
+one_shot = true
+
+[node name="NavigationAgent2D" parent="." index="4"]
+target_desired_distance = 50.0
+avoidance_enabled = true
+radius = 25.0
+max_neighbors = 30
+
+[node name="DeathPlayer" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("4_hdu1h")
+volume_db = 10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_t5pb1")
+}
+
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

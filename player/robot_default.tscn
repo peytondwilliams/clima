@@ -13,3 +13,5 @@ radius = 310.006
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetArea"]
 shape = SubResource("CircleShape2D_fgvod")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

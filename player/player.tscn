@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://coai4lmeu5dd4"]
+[gd_scene load_steps=8 format=3 uid="uid://coai4lmeu5dd4"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_uk6w1"]
 [ext_resource type="PackedScene" uid="uid://bi05fhc3ha7eg" path="res://player/Selector.tscn" id="2_u5foo"]
+
+[sub_resource type="SystemFont" id="SystemFont_kq0tt"]
+
+[sub_resource type="Theme" id="Theme_6b0hj"]
+default_font = SubResource("SystemFont_kq0tt")
+
+[sub_resource type="SystemFont" id="SystemFont_5fmy2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbs8k"]
+bg_color = Color(0.4, 0.4, 0.4, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_bnnhi"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_uk6w1")
@@ -12,3 +24,135 @@ position_smoothing_speed = 40.0
 
 [node name="Selector" parent="." instance=ExtResource("2_u5foo")]
 visible = false
+
+[node name="BaseUI" type="CanvasLayer" parent="."]
+
+[node name="TankButton" type="Button" parent="BaseUI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -652.0
+offset_top = -351.0
+offset_right = -256.0
+offset_bottom = -201.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_6b0hj")
+theme_override_fonts/font = SubResource("SystemFont_5fmy2")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_bbs8k")
+text = "Build Tank"
+
+[node name="Label" type="Label" parent="BaseUI/TankButton"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -212.0
+offset_top = -148.0
+offset_right = -28.0
+offset_bottom = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.470588, 0, 0.470588, 1)
+theme_override_fonts/font = SubResource("SystemFont_bnnhi")
+theme_override_font_sizes/font_size = 32
+text = "+2 Pollution"
+
+[node name="Label2" type="Label" parent="BaseUI/TankButton"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -359.0
+offset_top = -148.0
+offset_right = -175.0
+offset_bottom = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.952941, 0.639216, 0.388235, 1)
+theme_override_fonts/font = SubResource("SystemFont_bnnhi")
+theme_override_font_sizes/font_size = 32
+text = "-2 Scrap"
+
+[node name="ScrapperButton" type="Button" parent="BaseUI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1140.0
+offset_top = -354.0
+offset_right = -669.0
+offset_bottom = -204.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_6b0hj")
+theme_override_fonts/font = SubResource("SystemFont_5fmy2")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_bbs8k")
+text = "Build Scrapper"
+
+[node name="Label" type="Label" parent="BaseUI/ScrapperButton"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -297.0
+offset_top = -142.0
+offset_right = -24.0
+offset_bottom = -94.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.470588, 0, 0.470588, 1)
+theme_override_fonts/font = SubResource("SystemFont_bnnhi")
+theme_override_font_sizes/font_size = 32
+text = "+0.1 Pollution/sec"
+
+[node name="Label2" type="Label" parent="BaseUI/ScrapperButton"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -434.0
+offset_top = -145.0
+offset_right = -250.0
+offset_bottom = -97.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.952941, 0.639216, 0.388235, 1)
+theme_override_fonts/font = SubResource("SystemFont_bnnhi")
+theme_override_font_sizes/font_size = 32
+text = "-5 Scrap"
+
+[node name="Label3" type="Label" parent="BaseUI/ScrapperButton"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -456.0
+offset_top = -48.0
+offset_right = -236.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.952941, 0.639216, 0.388235, 1)
+theme_override_fonts/font = SubResource("SystemFont_bnnhi")
+theme_override_font_sizes/font_size = 32
+text = "+0.2 Scrap/sec"
+
+[connection signal="button_down" from="BaseUI/TankButton" to="." method="_on_tank_button_button_down"]
+[connection signal="button_up" from="BaseUI/TankButton" to="." method="_on_tank_button_button_up"]
+[connection signal="button_down" from="BaseUI/ScrapperButton" to="." method="_on_scrapper_button_button_down"]
+[connection signal="button_up" from="BaseUI/ScrapperButton" to="." method="_on_scrapper_button_button_up"]
