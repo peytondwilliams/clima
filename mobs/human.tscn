@@ -79,6 +79,7 @@ animation = &"shooting"
 shape = SubResource("CircleShape2D_0ldwj")
 
 [node name="TargetArea" type="Area2D" parent="."]
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetArea"]
 shape = SubResource("CircleShape2D_80txo")
@@ -97,4 +98,12 @@ libraries = {
 "": SubResource("AnimationLibrary_1dd3h")
 }
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 100.0
+target_desired_distance = 100.0
+radius = 20.0
+max_neighbors = 20
+max_speed = 200.0
+
 [connection signal="finished" from="AudioDeath" to="." method="_on_audio_death_finished"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

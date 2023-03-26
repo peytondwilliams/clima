@@ -86,7 +86,6 @@ one_shot = true
 
 [node name="NavigationAgent2D" parent="." index="4"]
 target_desired_distance = 50.0
-avoidance_enabled = true
 radius = 25.0
 max_neighbors = 30
 

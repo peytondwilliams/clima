@@ -1,6 +1,6 @@
 extends Area2D
 
-const DAMAGE = 6
+const DAMAGE = 5
 const SPEED = 150
 
 # Called when the node enters the scene tree for the first time.

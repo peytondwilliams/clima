@@ -24,7 +24,7 @@ func _process(delta):
 
 	var view_size: Vector2 = get_viewport_rect().size / $Camera2D.zoom.x
 	var mouse_loc: Vector2 = get_local_mouse_position()
-	var border_width = view_size.x * 0.07
+	var border_width = view_size.x * 0.04
 	var view_bound_x: float = (view_size.x / 2) - border_width
 	var view_bound_y: float = (view_size.y / 2) - border_width
 

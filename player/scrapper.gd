@@ -17,5 +17,9 @@ func receive_damage(damage):
 	health -= damage
 	if not dying and health <= 0:
 		dying = true
-		#$AudioDeath.play()
-		#$AnimationPlayer.play("death")
+		$AudioDeath.play()
+		$AnimationPlayer.play("death")
+
+
+func _on_animation_player_animation_finished(anim_name):
+	queue_free()

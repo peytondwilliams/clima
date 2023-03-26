@@ -42,6 +42,7 @@ func _physics_process(delta):
 		var init_velocity = SPEED * delta * Vector2.from_angle(position.angle_to_point($NavigationAgent2D.get_next_path_position()))
 		rotation = init_velocity.angle() + PI/2
 		$NavigationAgent2D.set_velocity(init_velocity)
+		velocity = init_velocity
 	else:
 		velocity = Vector2.ZERO
 
@@ -64,6 +65,7 @@ func deselected():
 	pass
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
+	print(safe_velocity)
 	velocity = safe_velocity
 
 

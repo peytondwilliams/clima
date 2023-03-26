@@ -1,0 +1,223 @@
+[gd_scene load_steps=6 format=3 uid="uid://by30r0h1yypwy"]
+
+[ext_resource type="Script" path="res://levels/menu.gd" id="1_lkw1r"]
+[ext_resource type="AudioStream" uid="uid://ckhbo3kxwg0vy" path="res://music/Ludum Dare 32 - Track 3.wav" id="2_8cof8"]
+[ext_resource type="Texture2D" uid="uid://cvy27qdykb1db" path="res://art/clima background.png" id="2_qdsmj"]
+[ext_resource type="Texture2D" uid="uid://bqvof8vw2t2jk" path="res://art/clima-title.png" id="3_xluja"]
+
+[sub_resource type="SystemFont" id="SystemFont_5n4wi"]
+
+[node name="Menu" type="Node"]
+script = ExtResource("1_lkw1r")
+
+[node name="StartMenu" type="CanvasLayer" parent="."]
+
+[node name="BackgroundRect" type="TextureRect" parent="StartMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qdsmj")
+stretch_mode = 5
+
+[node name="TitleRect" type="TextureRect" parent="StartMenu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -602.0
+offset_top = 178.0
+offset_right = 603.0
+offset_bottom = 576.0
+grow_horizontal = 2
+texture = ExtResource("3_xluja")
+
+[node name="StartButton" type="Button" parent="StartMenu"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -231.0
+offset_top = -434.0
+offset_right = 226.0
+offset_bottom = -203.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("SystemFont_5n4wi")
+theme_override_font_sizes/font_size = 128
+text = "Start"
+
+[node name="Label" type="Label" parent="StartMenu"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -218.0
+offset_top = -108.0
+offset_right = 220.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "By Peyton Williams"
+
+[node name="InstructButton" type="Button" parent="StartMenu"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -398.0
+offset_top = -704.0
+offset_right = 398.0
+offset_bottom = -473.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("SystemFont_5n4wi")
+theme_override_font_sizes/font_size = 128
+text = "Instructions"
+
+[node name="GameOverMenu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="BackgroundRect" type="TextureRect" parent="GameOverMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -894.0
+offset_top = -566.5
+offset_right = 894.0
+offset_bottom = 566.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qdsmj")
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="GameOverMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -322.0
+offset_top = -245.0
+offset_right = 337.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.309804, 0.313726, 0.305882, 1)
+
+[node name="Label" type="Label" parent="GameOverMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -326.0
+offset_top = -276.0
+offset_right = 342.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 150
+text = "You win!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="GameOverBackButton" type="Button" parent="GameOverMenu"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -217.5
+offset_top = -375.0
+offset_right = 239.5
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("SystemFont_5n4wi")
+theme_override_font_sizes/font_size = 128
+text = "Back"
+
+[node name="InstructMenu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="BackgroundRect" type="TextureRect" parent="InstructMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -894.0
+offset_top = -566.5
+offset_right = 894.0
+offset_bottom = 566.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qdsmj")
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="InstructMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -680.0
+offset_top = -347.0
+offset_right = 601.0
+offset_bottom = 321.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.309804, 0.313726, 0.305882, 1)
+
+[node name="Label" type="Label" parent="InstructMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -652.0
+offset_top = -338.0
+offset_right = 635.0
+offset_bottom = 362.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Controls:
+Left Click: Select Base/Unit
+Hold Left Click: Drag to Select Units
+Right Click: Order selected units to move
+
+Goal:
+As a Rogue A.I., your goal is to wipe out humans and their polluting machines before the planet reaches a point of no return
+
+"
+autowrap_mode = 2
+
+[node name="BackButton" type="Button" parent="InstructMenu"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -231.0
+offset_top = -434.0
+offset_right = 226.0
+offset_bottom = -203.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("SystemFont_5n4wi")
+theme_override_font_sizes/font_size = 128
+text = "Back"
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_8cof8")
+volume_db = 20.0
+autoplay = true
+
+[connection signal="pressed" from="StartMenu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="StartMenu/InstructButton" to="." method="_on_instruct_button_pressed"]
+[connection signal="pressed" from="GameOverMenu/GameOverBackButton" to="." method="_on_game_over_back_button_pressed"]
+[connection signal="pressed" from="InstructMenu/BackButton" to="." method="_on_back_button_pressed"]
